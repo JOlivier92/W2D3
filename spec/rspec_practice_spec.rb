@@ -31,7 +31,6 @@ RSpec.describe Array do
     end
   end  
   
-  
   describe "#our_transpose" do
     rows = [[0, 1, 2],
             [3, 4, 5],
@@ -43,4 +42,16 @@ RSpec.describe Array do
       expect(rows.our_transpose).to eql([[0,3,6],[1,4,7],[2,5,8]])
     end
   end
+  
+  describe "stock_picker" do
+    amazon_prices = [1,2,3,4,6]
+    it 'returns our best day to buy and sell stock' do
+      expect(amazon_prices.stock_picker).to eq([0,4])
+    end
+    it 'raises error if we dont receive array of stock prices' do
+      expect { [1,2,3,"4"].stock_picker }.to raise_error "Not stock prices"
+      
+    end
+  end
 end
+

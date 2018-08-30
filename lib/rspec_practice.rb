@@ -25,4 +25,24 @@ class Array
   def our_transpose
     self.transpose
   end
+  
+  #[ 2, 3, 5, 9, 2]
+  def stock_picker
+    best_delta = 0
+    days = []
+    (self.length - 1).times do |i|
+      ((i + 1)..self.length - 1).each do |j|
+        raise "Not stock prices" unless self[j].instance_of?(Fixnum)
+        delta = self[j] - self[i] 
+        if delta > best_delta
+          best_delta = delta 
+          days = [i, j]
+        end
+      end
+    end
+    p days
+  end
+  
+  
 end
+
